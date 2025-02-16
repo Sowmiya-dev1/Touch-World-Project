@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+
+.login-container {
+  height: 81vh;
+  background-image: url('/assets/images/login-bg.jpg');   
+  margin: 53px;
+  display: flex;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.left-section {
+  flex: 1.5;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;  
+  text-align: left;  
+  padding-left: 80px; 
+  padding-right: 40px; 
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.logo-div {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  position: relative;
+  bottom: 46px;
+}
+
+.logo-div i {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+
+.left-section h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  top: 81px;
+  position: relative;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.left-section p {
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 400px; 
+  margin-bottom: 20px;
+  top: 81px;
+  position: relative;
+}
+
+.social-icons {
+  top: 81px;
+  position: relative;
+  display: flex;
+  gap: 15px; 
+}
+
+.social-icons a {
+  color: white;
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #ff3d00;
+}
+
+.right-section {
+  flex: 1;
+  background: rgba(45, 34, 34, 0.39);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  padding: 60px;
+  border-radius: 10px;
+  width: 350px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.right-section h2 {
+  position: relative;
+  bottom: 29px;
+  font-family: "Poppins", sans-serif;
+  font-size: 27px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+label {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 85%;
+  padding: 12px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background: transparent !important;
+  color: white !important;
+  font-size: 14px;
+  outline: none;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+button {
+  background: #da3806;
+  border: none;
+  padding: 14px;
+  width: 29%;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+  margin-left: 111px;
+
+}
+
+button:disabled {
+  background: #f3bbbb;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background: #da3806;
+}
+
+.input-icons{
+  right: 15px;
+  position: relative;
+  color: #aaaaaa;
+}
+input[type="checkbox"] {
+  width: 41px;
+  margin-right: 0px;
+  margin-left: -13px;
+}
+.terms-label{
+  bottom: 2px;
+    position: relative;
+}
+
+.password-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.password-input {
+  width: 100%;
+  padding: 10px 35px 10px 30px; 
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 16px;
+  color: gray;
+  transition: color 0.3s ease;
+}
+
+.toggle-password:hover {
+  color: black;
+}
+
+/* Hides default browser eye icon */
+ input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+} 
+

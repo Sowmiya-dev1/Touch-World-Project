@@ -1,0 +1,64 @@
+<div class="login-container">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <div class="left-section">
+      <div class="logo-div">
+        <i class="fa-solid fa-triangle-circle-square"></i> 
+        KRADUS</div>
+        <h1>Don't have an</h1><h1>account?</h1>
+               <p>Register to access all the features of out service.<br>
+              Manage your business in one palce. It's free.</p>
+
+               <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-vk"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-google-plus-g"></i></a>
+            </div>
+            
+      </div>
+
+
+<div class="right-section">
+  <h2>Sign up</h2>  
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div>
+      <label>Username</label>
+     <span> <input type="text" formControlName="username" placeholder="Enter your username" autocomplete="off"/>
+      <i class="fa-regular fa-user input-icons"></i></span>
+    </div>
+    <div class="password-container">  
+      <label>Password</label>
+      <span>
+        <input 
+          [type]="showPassword ? 'text' : 'password'" 
+          formControlName="password" 
+          placeholder="Enter your password" 
+          autocomplete="new-password"
+        />
+        <i 
+        [class.fa-eye-slash]="!showPassword" 
+        [class.fa-eye]="showPassword" 
+        class="fa-solid input-icons"
+        (click)="togglePasswordVisibility()">
+        </i>
+      </span>
+    </div>
+    
+    <div>
+      <input type="checkbox" formControlName="terms" id="termsCheckbox" />
+      <label for="termsCheckbox" class="terms-label">
+        I agree to the all statements in <a href="/terms-and-conditions" target="_blank" style="color: white">Terms and Conditions</a>
+      </label>
+    </div>
+  
+    <div *ngIf="errorMessage" style="color: rgb(0, 0, 0);">
+      *{{ errorMessage }}
+    </div>
+
+      <button type="submit" [disabled]="loginForm.invalid">Sign up</button>
+  </form>
+</div>
+
+  </div>
+  
