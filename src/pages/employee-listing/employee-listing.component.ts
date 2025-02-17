@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, ChangeDetectorRef, Inject, PLATFORM_ID } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,6 +9,7 @@ import { SidebarService } from '../../layout/sidebar/sidebar.service';
 import { SidebarComponent } from "../../layout/sidebar/sidebar.component";
 import { Router } from '@angular/router';
 import { AddEmployeeComponent } from '../add-employee/add-employee.component';
+import { isPlatformBrowser } from '@angular/common';
 
 interface Employee {
     name: string;
@@ -29,7 +30,12 @@ export class EmployeeListingComponent implements AfterViewInit {
 
     isSidebarExpanded = false;
 
-    constructor(private sidebarService: SidebarService, private router: Router, private cdr: ChangeDetectorRef) {
+    constructor(
+        private sidebarService: SidebarService,
+        private router: Router,
+        private cdr: ChangeDetectorRef,
+        @Inject(PLATFORM_ID) private platformId: Object
+    ) {
         this.sidebarService.isExpanded$.subscribe(state => {
             this.isSidebarExpanded = state;
         });
@@ -75,12 +81,14 @@ export class EmployeeListingComponent implements AfterViewInit {
     dataSource = new MatTableDataSource<Employee>(this.employees.slice(0, 15));
 
     ngAfterViewInit() {
-        const storedEmployees = JSON.parse(localStorage.getItem('employees') || '[]');
-        this.employees = [...this.staticEmployees, ...storedEmployees];
+        if (isPlatformBrowser(this.platformId)) {
+            const storedEmployees = JSON.parse(localStorage.getItem('employees') || '[]');
+            this.employees = [...this.staticEmployees, ...storedEmployees];
+        } else {
+            this.employees = [...this.staticEmployees];
+        }
 
         this.dataSource.data = this.employees;
-
-
         this.dataSource.paginator = this.paginator;
         this.paginator.pageSize = 10;
 
@@ -88,15 +96,15 @@ export class EmployeeListingComponent implements AfterViewInit {
     }
 
     applyFilter(event: Event, column: keyof Employee) {
-      const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+        const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
 
-      this.dataSource.filterPredicate = (data, filter) => {
-          const dataStr = data[column].toString().toLowerCase();
-          return dataStr.includes(filter);
-      };
+        this.dataSource.filterPredicate = (data, filter) => {
+            const dataStr = data[column].toString().toLowerCase();
+            return dataStr.includes(filter);
+        };
 
-      this.dataSource.filter = filterValue;
-  }
+        this.dataSource.filter = filterValue;
+    }
 
     deleteEmployee(index: number) {
         this.employees.splice(index, 1);

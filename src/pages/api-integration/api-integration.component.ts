@@ -29,14 +29,15 @@ export class ApiIntegrationComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['id', 'name', 'date'];
   dataSource = new MatTableDataSource<any>([]);
-  totalRecords = 200000; // Total records (assuming known)
-  pageSize = 10; // Records per page
+  totalRecords = 200000; 
+  pageSize = 10; 
   currentPage = 0;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   ngOnInit() {
+    this.totalRecords= 200000;
     this.fetchData(this.currentPage, this.pageSize);
   }
 
@@ -50,8 +51,11 @@ export class ApiIntegrationComponent implements OnInit, AfterViewInit {
   
     this.http.get<any[]>(apiUrl).subscribe({
       next: (data) => {
-        this.dataSource.data = data; // Update only the displayed data
+        this.dataSource.data = data; 
         this.currentPage = page;
+        if (this.paginator) {
+          this.paginator.length = this.totalRecords; 
+        }
       },
       error: (error) => {
         console.error('Error fetching data:', error);
@@ -70,6 +74,6 @@ export class ApiIntegrationComponent implements OnInit, AfterViewInit {
   }
 
   toggleFilter(column: string) {
-    this.filterVisibility[column] = !this.filterVisibility[column]; // Toggle visibility
+    this.filterVisibility[column] = !this.filterVisibility[column]; 
   }
 }

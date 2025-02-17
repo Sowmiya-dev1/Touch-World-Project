@@ -29,7 +29,7 @@ export class LoginComponent {
     if (username === 'touchworld' && password === 'touchworldTech') {
       this.router.navigate(['/employee-listing']);
     } else {
-      this.errorMessage = 'Invalid username or password!';
+      this.errorMessage = 'Invalid Username or Password!';
     }
   }
 
