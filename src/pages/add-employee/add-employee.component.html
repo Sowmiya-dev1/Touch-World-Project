@@ -1,5 +1,8 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <div class="add-employee-container">
     <h2>Add Employee</h2>
+    
+      <div class="add-tab">
     <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
         <div>
             <label for="name">Employee Name:</label>
@@ -31,6 +34,10 @@
                 <small *ngIf="employeeForm.controls['address'].errors?.['required']">Address is required.</small>
             </div>
         </div>
-        <button type="submit" [disabled]="employeeForm.invalid">Submit</button>
+        <button type="submit" class="submit" [disabled]="employeeForm.invalid">Submit</button>
+        <button mat-icon-button class="close-btn" (click)="closeTab()">
+            <div class="fa-closed">Close</div>
+          </button>
     </form>
+</div>
 </div>

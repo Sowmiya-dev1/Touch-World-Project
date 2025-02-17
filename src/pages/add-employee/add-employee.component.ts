@@ -38,4 +38,8 @@ export class AddEmployeeComponent {
       this.router.navigate(['/employee-listing']);
     }
   }
+  
+  closeTab() {
+    this.router.navigate(['/employee-listing']);  // Adjust path as needed
+  }
 }

@@ -27,8 +27,8 @@
     color: red;
 }
 
-.add-employee-container form button {
-    width: 100%;
+.add-employee-container form .submit {
+    width: 45%;
     padding: 10px;
     background-color: #007BFF;
     color: white;
@@ -40,4 +40,22 @@
 .add-employee-container form button:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
+}
+
+.fa-closed{
+    top: 9px;
+    position: relative;
+}
+
+.close-btn{
+    width: 45%;
+    padding-bottom: 4px;
+    top: -9px;
+    left: 40px;
+    position: relative;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    background-color: #da3806;
+    font-size: 16px;
 }
