@@ -10,11 +10,6 @@ import { SidebarService } from './sidebar.service';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
-  // isCollapsed = false;
-
-  // toggleSidebar() {
-  //   this.isCollapsed = !this.isCollapsed;
-  // }
 
   isExpanded = false;
 
