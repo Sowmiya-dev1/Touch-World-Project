@@ -1,1 +1,58 @@
-<p>api-integration works!</p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<div class="page-container" [class.sidebar-expanded]="isSidebarExpanded">
+    <app-sidebar></app-sidebar>
+   
+    <div class="table-container">
+        <div class="emp-list-head">
+            <p class="screen-header1">
+                <span class="emp-head">API Integration List</span>
+            </p>
+</div>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <!-- ID -->
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="sticky-column th-div"> ID
+  <div (click)="toggleFilter('id')">
+    <i class="fa-solid fa-filter filter-icon"> </i>      </div>
+          <input *ngIf="filterVisibility['id']" matInput (input)="applyFilter($event, 'id')" placeholder="Filter ID">
+        </th>
+        <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+      </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="sticky-column th-div"> Name 
+        <div mat-icon-button (click)="toggleFilter('name')">
+            <i class="fa-solid fa-filter filter-icon"> </i>      </div>
+        <input *ngIf="filterVisibility['name']" matInput (input)="applyFilter($event, 'name')" placeholder="Filter Name">
+      </th>
+      <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+    </ng-container>
+  
+    <!-- Date Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="sticky-column th-div"> Date 
+        <div mat-icon-button (click)="toggleFilter('date')">
+            <i class="fa-solid fa-filter filter-icon"> </i>      </div>
+        <input *ngIf="filterVisibility['date']" matInput (input)="applyFilter($event, 'date')" placeholder="Filter Date">
+      </th>
+      <td mat-cell *matCellDef="let element"> {{ element.date }} </td>
+    </ng-container>
+  
+    <!-- Table Header & Row -->
+    <thead>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    </thead>
+    <tbody>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </tbody>
+  </table>
+  
+  <!-- Pagination -->
+  <mat-paginator
+    [length]="totalRecords"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 25, 50]"
+    (page)="onPageChange($event)">
+  </mat-paginator>
+  

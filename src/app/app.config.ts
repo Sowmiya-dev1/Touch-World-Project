@@ -7,6 +7,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { routes } from './app.routes';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,6 +15,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
     provideAnimationsAsync(),
-    importProvidersFrom(MatTableModule, MatPaginatorModule), provideAnimationsAsync() 
+    importProvidersFrom(MatTableModule, MatPaginatorModule), provideAnimationsAsync() ,
+    provideHttpClient(withFetch()),
   ]
 };
