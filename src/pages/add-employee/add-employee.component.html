@@ -1,1 +1,36 @@
-<p>add-employee works!</p>
+<div class="add-employee-container">
+    <h2>Add Employee</h2>
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="name">Employee Name:</label>
+            <input id="name" formControlName="name" type="text">
+            <div *ngIf="employeeForm.controls['name'].invalid && (employeeForm.controls['name'].dirty || employeeForm.controls['name'].touched)">
+                <small *ngIf="employeeForm.controls['name'].errors?.['required']">Employee Name is required.</small>
+            </div>
+        </div>
+        <div>
+            <label for="contact">Contact No:</label>
+            <input id="contact" formControlName="contact" type="text">
+            <div *ngIf="employeeForm.controls['contact'].invalid && (employeeForm.controls['contact'].dirty || employeeForm.controls['contact'].touched)">
+                <small *ngIf="employeeForm.controls['contact'].errors?.['required']">Contact No is required.</small>
+                <small *ngIf="employeeForm.controls['contact'].errors?.['pattern']">Contact No must be 10 digits.</small>
+            </div>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input id="email" formControlName="email" type="email">
+            <div *ngIf="employeeForm.controls['email'].invalid && (employeeForm.controls['email'].dirty || employeeForm.controls['email'].touched)">
+                <small *ngIf="employeeForm.controls['email'].errors?.['required']">Email is required.</small>
+                <small *ngIf="employeeForm.controls['email'].errors?.['email']">Email must be a valid email format.</small>
+            </div>
+        </div>
+        <div>
+            <label for="address">Address:</label>
+            <input id="address" formControlName="address" type="text">
+            <div *ngIf="employeeForm.controls['address'].invalid && (employeeForm.controls['address'].dirty || employeeForm.controls['address'].touched)">
+                <small *ngIf="employeeForm.controls['address'].errors?.['required']">Address is required.</small>
+            </div>
+        </div>
+        <button type="submit" [disabled]="employeeForm.invalid">Submit</button>
+    </form>
+</div>

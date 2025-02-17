@@ -1,1 +1,19 @@
-<p>sidebar works!</p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<nav class="sidebar" [class.expanded]="isExpanded">
+
+  <button class="toggle-btn" (click)="toggleSidebar()">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <ul class="menu">
+    <li routerLink="/employee-listing" routerLinkActive="active" class="menu-item">
+      <i class="fa-solid fa-table"></i>
+      <span *ngIf="isExpanded">Employee Listing</span>
+    </li>
+    <li routerLink="/api-integration" routerLinkActive="active" class="menu-item">
+      <i class="fa-solid fa-database"></i>
+      <span *ngIf="isExpanded">API Integration</span>
+    </li>
+  </ul>
+</nav>
