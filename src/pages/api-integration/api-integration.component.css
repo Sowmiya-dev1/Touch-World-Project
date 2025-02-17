@@ -107,8 +107,8 @@ table {
 }
 
 .cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
-  margin-left: 10px;
-  width: 128px;
+  margin-left: 49px;
+  width: 100px;
 }
 
 .icon-create {
@@ -147,3 +147,4 @@ table {
   position: relative;
   cursor: pointer;
 }
+
