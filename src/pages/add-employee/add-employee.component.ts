@@ -40,6 +40,6 @@ export class AddEmployeeComponent {
   }
   
   closeTab() {
-    this.router.navigate(['/employee-listing']);  // Adjust path as needed
+    this.router.navigate(['/employee-listing']);  
   }
 }

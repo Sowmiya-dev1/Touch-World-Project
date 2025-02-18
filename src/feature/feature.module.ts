@@ -9,8 +9,8 @@ import { ApiIntegrationComponent } from '../pages/api-integration/api-integratio
   declarations: [],
   imports: [
     CommonModule,
-    MatTableModule, // Import the material table module
-    HttpClientModule, // Import HttpClientModule to make HTTP requests
+    MatTableModule, 
+    HttpClientModule, 
     ApiIntegrationComponent
   ],
 })

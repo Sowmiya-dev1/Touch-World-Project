@@ -9,8 +9,8 @@
             </p>
 </div>
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-    <!-- ID -->
-    <ng-container matColumnDef="id">
+  
+  <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="sticky-column th-div"> ID
   <div (click)="toggleFilter('id')">
     <i class="fa-solid fa-filter filter-icon"> </i>      </div>
@@ -19,7 +19,6 @@
         <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
       </ng-container>
   
-    <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header class="sticky-column th-div"> Name 
         <div mat-icon-button (click)="toggleFilter('name')">
@@ -29,7 +28,6 @@
       <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
     </ng-container>
   
-    <!-- Date Column -->
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef mat-sort-header class="sticky-column th-div"> Date 
         <div mat-icon-button (click)="toggleFilter('date')">
@@ -39,7 +37,6 @@
       <td mat-cell *matCellDef="let element"> {{ element.date }} </td>
     </ng-container>
   
-    <!-- Table Header & Row -->
     <thead>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     </thead>
@@ -48,7 +45,6 @@
     </tbody>
   </table>
   
-  <!-- Pagination -->
   <mat-paginator
     [length]="totalRecords"
     [pageSize]="pageSize"
